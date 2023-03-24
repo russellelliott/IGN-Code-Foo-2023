@@ -12,11 +12,6 @@ export class PollService {
       values: id ? [`${id}`] : [],
     };
     const {rows} = await pool.query(query);
-    const categories = [];
-    for (const row of rows) {
-      categories.push({id: row.id, parent: row.parent, data: row.data.data, votes: row.data.votes});
-    }
-    console.log(rows);
     return rows;
   }
 
@@ -33,8 +28,8 @@ export class PollService {
     return {
       id: rows[0].id,
       parent: rows[0].parent,
-      data: rows[0].data.data,
-      votes: rows[0].data.votes
+      data: rows[0].data,
+      votes: rows[0].votes
     };
   }
 

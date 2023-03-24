@@ -1,0 +1,64 @@
+{
+  "name": "cse187-group-project",
+  "version": "1.0.0",
+  "description": "CSE 187 Group Project",
+  "author": "",
+  "license": "UNLICENSED",
+  "repository": "none",
+  "devDependencies": {
+    "@types/bcrypt": "*",
+    "@types/express": "*",
+    "@types/jest": "*",
+    "@types/jsonwebtoken": "*",
+    "@types/node": "*",
+    "@types/pg": "*",
+    "@types/supertest": "*",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "*",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-typescript": "*",
+    "jest": "*",
+    "nodemon": "*",
+    "prettier": "2.8.4",
+    "prettier-eslint": "^15.0.1",
+    "supertest": "*",
+    "ts-jest": "*",
+    "ts-node": "*",
+    "ts-postgres": "*",
+    "typescript": "*",
+    "whatwg-fetch": "*"
+  },
+  "dependencies": {
+    "bcrypt": "*",
+    "dotenv": "*",
+    "express": "*",
+    "graphql": "*",
+    "graphql-scalars": "^1.20.1",
+    "graphql-yoga": "^3.5.1",
+    "jsonwebtoken": "*",
+    "msw": "*",
+    "pg": "*",
+    "reflect-metadata": "*",
+    "type-graphql": "*",
+    "wait-port": "^1.0.4"
+  },
+  "scripts": {
+    "start": "node dist/src/server.js",
+    "build": "tsc",
+    "dev": "NODE_ENV=development wait-port 4001 && wait-port 4002 && wait-port 4003 && wait-port 4004 && wait-port 4007 && nodemon",
+    "dev-windows": "set NODE_ENV=development && wait-port ",
+    "test": "jest --runInBand --forceExit --detectOpenHandles --verbose",
+    "test:ci": "jest --runInBand --forceExit -ci --json --testLocationInResults --outputFile=report.json",
+    "lint": "eslint ./src/**/*.[jt]s --fix && prettier --write .",
+    "lint-only": "eslint ./src/**/*.[jt]s --fix"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src",
+      "data"
+    ],
+    "ext": "ts,json",
+    "exec": "ts-node src/server.ts"
+  }
+}

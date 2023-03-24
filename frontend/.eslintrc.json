@@ -1,0 +1,14 @@
+{
+    "extends": ["next/core-web-vitals", "typescript"],
+    "parserOptions": {
+      "ecmaVersion": 13
+    },
+    "rules": {
+      "no-console": 1,
+      "indent": [
+        "error",
+        2
+      ]
+    }
+  }
+  

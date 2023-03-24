@@ -14,9 +14,10 @@ export class PollService {
     const {rows} = await pool.query(query);
     const categories = [];
     for (const row of rows) {
-      categories.push({id: row.id, parent: row.parent, data: row.data.name, votes: row.data.votes});
+      categories.push({id: row.id, parent: row.parent, data: row.data.data, votes: row.data.votes});
     }
-    return categories;
+    console.log(rows);
+    return rows;
   }
 
   public async add(id: string): Promise<Poll> {
@@ -32,7 +33,7 @@ export class PollService {
     return {
       id: rows[0].id,
       parent: rows[0].parent,
-      data: rows[0].data.name,
+      data: rows[0].data.data,
       votes: rows[0].data.votes
     };
   }

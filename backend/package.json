@@ -46,7 +46,7 @@
   "scripts": {
     "start": "node dist/src/server.js",
     "build": "tsc",
-    "dev": "NODE_ENV=development wait-port 4001 && wait-port 4002 && wait-port 4003 && wait-port 4004 && wait-port 4007 && nodemon",
+    "dev": "NODE_ENV=development && nodemon",
     "dev-windows": "set NODE_ENV=development && wait-port ",
     "test": "jest --runInBand --forceExit --detectOpenHandles --verbose",
     "test:ci": "jest --runInBand --forceExit -ci --json --testLocationInResults --outputFile=report.json",

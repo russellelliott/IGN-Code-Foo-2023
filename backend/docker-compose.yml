@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   postgres:
-    container_name: cse187-group-project
+    container_name: ign-code-foo-2023
     image: postgres
     environment:
       POSTGRES_DB: ${POSTGRES_DB}

@@ -51,10 +51,10 @@ test('Vote for Star Trek', async () => {
     .expect(200)
     .then((data) => {
       expect(data).toBeDefined();
-      expect(data.body).toBeDefined();
-      expect(data.body.id).toBeDefined();
-      expect(data.body.parent).toBeDefined();
-      expect(data.body.data).toBeDefined();
-      expect(data.body.votes).toBeDefined();
+      expect(data.body.data.addPoll).toBeDefined();
+      expect(data.body.data.addPoll.id).toBeDefined();
+      expect(data.body.data.addPoll.parent).toBeDefined();
+      expect(data.body.data.addPoll.data).toBeDefined();
+      expect(data.body.data.addPoll.votes).toBeDefined();
     });
 });

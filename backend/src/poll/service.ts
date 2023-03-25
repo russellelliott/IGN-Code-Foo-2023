@@ -2,14 +2,11 @@ import {Poll} from './schema';
 import {pool} from '../db';
 
 export class PollService {
-  public async list(id?: string): Promise<Poll[]> {
-    let select = 'SELECT * FROM options';
-    if (id) {
-      select += ' WHERE parent = $1';
-    }
+  public async list(id: string): Promise<Poll[]> {
+    let select = 'SELECT * FROM options WHERE parent = $1';
     const query = {
       text: select,
-      values: id ? [`${id}`] : [],
+      values: [`${id}`],
     };
     const {rows} = await pool.query(query);
     return rows;

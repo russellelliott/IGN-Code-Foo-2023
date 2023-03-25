@@ -22,31 +22,11 @@ afterAll((done) => {
   db.shutdown();
 });
 
-const allOptions = `query{
-    Poll{
-        id, parent, data, votes
-    }
-}`;
-
 const particularPoll = `query{
     Poll(input: "977d93a1-6d77-4523-bd46-755cda3ccdfc"){
         id, parent, data, votes
     }
 }`;
-
-test('GET Options from all polls', async () => {
-    await request
-      .post('/graphql')
-      //.set('Authorization', 'Bearer ' + accessToken)
-      .send({query: allOptions})
-      .expect(200)
-      .expect('Content-Type', /json/)
-      .then((data) => {
-        expect(data).toBeDefined();
-        //expect(data.body).toBeDefined();
-        //expect(data.body.data).toBeDefined();
-      });
-  });
 
 test('GET Options from particular poll', async () => {
   await request

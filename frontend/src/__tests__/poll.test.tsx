@@ -101,7 +101,7 @@ test('Select Battlestar Galactica', async () => {
   return;
 });
 
-test('Logged in. Able to edit a category.', async () => {
+test('Select Battlestar Galactica and Click the Vote Button', async () => {
   render(<Poll />);
 
   await waitFor( () => {

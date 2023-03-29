@@ -10,9 +10,6 @@ backend/node_modules/
 *.tsbuildinfo
 .npm
 .eslintcache
-.env
-.env.test
-.env.development
 .next
 
 #Jetbrains

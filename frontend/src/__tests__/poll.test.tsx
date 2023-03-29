@@ -110,7 +110,12 @@ test('Select Battlestar Galactica and Click the Vote Button', async () => {
     fireEvent.click(selectBattleStar);
   })
 
-  fireEvent.click(screen.getByText('Battlestar Galactica'));
+  //fireEvent.click(screen.getByText('Battlestar Galactica'));
+
+  const selectBattleStar = screen.getByText('Vote For Battlestar Galactica');
+  expect(selectBattleStar).toBeDefined();
+  fireEvent.click(selectBattleStar);
+  
 
   return;
 });

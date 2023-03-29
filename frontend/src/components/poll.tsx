@@ -16,7 +16,7 @@ function Poll() {
 
     function confirm(){
         console.log(vote);
-        const fetchData = async () => {
+        const sendData = async () => {
             const query = {query: `mutation addPoll {
                   addPoll(input: "`+vote?.id+`"){
                       id, parent, data, votes
@@ -35,6 +35,32 @@ function Poll() {
                 console.log(json);
                 setVoted(true);
               //setOptions(json.data.Poll);
+              //console.log(json.data.getAllAccounts);
+            })
+          }
+          sendData().catch((err) => {
+            console.log(err);
+            //Router.push({pathname: '/error'});
+            return;
+          });
+
+          const fetchData = async () => {
+            const query = {query: `query Poll {
+                  Poll(input: "977d93a1-6d77-4523-bd46-755cda3ccdfc"){
+                      id, parent, data, votes
+                  }
+              }`};
+            await fetch('http://localhost:4000/graphql', {
+              mode:'cors',
+              method: 'POST',
+              headers: {
+                'Content-type': 'application/json',
+              },
+              body: JSON.stringify(query),
+            }).then((res) => {
+              return res.json()
+            }).then((json) => {
+              setOptions(json.data.Poll);
               //console.log(json.data.getAllAccounts);
             })
           }

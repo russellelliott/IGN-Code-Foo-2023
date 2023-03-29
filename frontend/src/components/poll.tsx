@@ -108,7 +108,7 @@ function Poll() {
                 <div>
 
 
-                <Button variant="contained" onClick={() => { confirm() }}>Vote for {vote.data}</Button>
+                <Button variant="contained" id="select" onClick={() => { confirm() }}>Vote for {vote.data}</Button>
 
                 </div>
             )

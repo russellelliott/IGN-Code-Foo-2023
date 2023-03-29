@@ -66,7 +66,7 @@ test ("login renders", async () => {
 /**
  *
  */
-test('Header successfully renders the categories given by server', async () => {
+test('Get data from the server', async () => {
   const options = [
     'Battlestar Galactica',
     'Interstellar',

@@ -33,6 +33,7 @@ function Poll() {
               return res.json()
             }).then((json) => {
                 console.log(json);
+                setVoted(true);
               //setOptions(json.data.Poll);
               //console.log(json.data.getAllAccounts);
             })
@@ -45,6 +46,7 @@ function Poll() {
     }
     const [options, setOptions] = useState<Poll[]>([]);
     const [vote, setVote] = useState<Poll>();
+    const [voted, setVoted] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -86,6 +88,16 @@ function Poll() {
                     <EditIcon />
                   </IconButton>
                 </td>
+                <td>
+                    {(() => {
+                        if (typeof window !== 'undefined' && (voted !== false)) {
+                            return(
+                                option.votes
+                            )
+                        }
+                    })()}
+                </td>
+
               </tr>
             );
           })}

@@ -9,11 +9,12 @@ import EditIcon from '@mui/icons-material/Edit';
 
 function Poll() {
     function select(poll: Poll){
-        //setAccount(account);
+        setVote(poll);
         console.log(poll.id);
         //alert(ID);
     }
     const [options, setOptions] = useState<Poll[]>([]);
+    const [vote, setVote] = useState<Poll>();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -58,6 +59,26 @@ function Poll() {
               </tr>
             );
           })}
+
+    {(() => {
+        if (typeof window !== 'undefined' && (vote !== undefined)) {
+          return (
+            <div>
+
+
+              <Button variant="contained" onClick={() => { confirm() }}>Vote for {vote.data}</Button>
+
+            </div>
+          )
+        } else {
+          return (
+            <div>
+              <h1>Please pick an option to cast a vote.</h1>
+            </div>
+          )
+        }
+      })()}
+
             
         </React.Fragment>
       );

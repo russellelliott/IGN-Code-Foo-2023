@@ -13,6 +13,36 @@ function Poll() {
         console.log(poll.id);
         //alert(ID);
     }
+
+    function confirm(){
+        console.log(vote);
+        const fetchData = async () => {
+            const query = {query: `mutation addPoll {
+                  addPoll(input: "`+vote?.id+`"){
+                      id, parent, data, votes
+                  }
+              }`};
+            await fetch('http://localhost:4000/graphql', {
+              mode:'cors',
+              method: 'POST',
+              headers: {
+                'Content-type': 'application/json',
+              },
+              body: JSON.stringify(query),
+            }).then((res) => {
+              return res.json()
+            }).then((json) => {
+                console.log(json);
+              //setOptions(json.data.Poll);
+              //console.log(json.data.getAllAccounts);
+            })
+          }
+          fetchData().catch((err) => {
+            console.log(err);
+            //Router.push({pathname: '/error'});
+            return;
+          });
+    }
     const [options, setOptions] = useState<Poll[]>([]);
     const [vote, setVote] = useState<Poll>();
 
@@ -60,24 +90,24 @@ function Poll() {
             );
           })}
 
-    {(() => {
-        if (typeof window !== 'undefined' && (vote !== undefined)) {
-          return (
-            <div>
+        {(() => {
+            if (typeof window !== 'undefined' && (vote !== undefined)) {
+            return (
+                <div>
 
 
-              <Button variant="contained" onClick={() => { confirm() }}>Vote for {vote.data}</Button>
+                <Button variant="contained" onClick={() => { confirm() }}>Vote for {vote.data}</Button>
 
-            </div>
-          )
-        } else {
-          return (
-            <div>
-              <h1>Please pick an option to cast a vote.</h1>
-            </div>
-          )
-        }
-      })()}
+                </div>
+            )
+            } else {
+            return (
+                <div>
+                <h1>Please pick an option to cast a vote.</h1>
+                </div>
+            )
+            }
+        })()}
 
             
         </React.Fragment>

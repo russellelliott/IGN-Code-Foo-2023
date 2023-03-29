@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "wait-port 4005 && next dev -p 3001",
+    "dev": "wait-port 4000 && next dev -p 3000",
     "build": "next build",
-    "start": "next start -p 3001",
+    "start": "next start -p 3000",
     "lint": "next lint --fix --max-warnings=0",
     "test": "jest",
     "test:silent": "jest --silent",

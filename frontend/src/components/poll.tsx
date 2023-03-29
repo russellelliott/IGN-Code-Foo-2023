@@ -38,11 +38,11 @@ function Poll() {
               //console.log(json.data.getAllAccounts);
             })
           }
-        //   sendData().catch((err) => {
-        //     console.log(err);
-        //     //Router.push({pathname: '/error'});
-        //     return;
-        //   });
+          sendData().catch((err) => {
+            console.log(err);
+            //Router.push({pathname: '/error'});
+            return;
+          });
 
           const fetchData = async () => {
             const query = {query: `query Poll {
@@ -64,11 +64,11 @@ function Poll() {
               //console.log(json.data.getAllAccounts);
             })
           }
-        //   fetchData().catch((err) => {
-        //     console.log(err);
-        //     //Router.push({pathname: '/error'});
-        //     return;
-        //   });
+          fetchData().catch((err) => {
+            console.log(err);
+            //Router.push({pathname: '/error'});
+            return;
+          });
     }
     const [options, setOptions] = useState<Poll[]>([]);
     const [vote, setVote] = useState<Poll>();

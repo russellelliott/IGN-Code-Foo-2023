@@ -110,7 +110,7 @@ test('Logged in. Able to edit a category.', async () => {
     fireEvent.click(selectBattleStar);
   })
 
-  fireEvent.click(screen.getByLabelText('Vote for'));
+  fireEvent.click(screen.getByText('Vote for'));
 
   return;
 });

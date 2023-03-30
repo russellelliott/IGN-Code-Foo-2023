@@ -13,7 +13,7 @@ function Poll() {
         console.log(poll.id);
         //alert(ID);
     }
-
+    let votedFor = {} as any;
     function confirm(){
         console.log(vote);
         const sendData = async () => {
@@ -33,6 +33,7 @@ function Poll() {
               return res.json()
             }).then((json) => {
                 console.log(json);
+                votedFor = json;
                 setVoted(true);
               //setOptions(json.data.Poll);
               //console.log(json.data.getAllAccounts);
@@ -60,6 +61,16 @@ function Poll() {
             }).then((res) => {
               return res.json()
             }).then((json) => {
+              console.log(votedFor);
+              console.log(json.data.Poll)
+              json.data.Poll.forEach(function (arrayItem) {
+                  var x = arrayItem.id;
+                  console.log(x);
+                  if(x == votedFor.id){
+                    arrayItem.votes = votedFor.votes;
+                  }
+              });
+              console.log(json.data.Poll);
               setOptions(json.data.Poll);
               //console.log(json.data.getAllAccounts);
             })
@@ -110,9 +121,23 @@ function Poll() {
               <tr key={option.id}>
                 <td>{option.data}</td>
                 <td>
-                  <IconButton id = {"edit"+option.id} aria-label={"select "+option.id} size="large" onClick={() => { select(option) }}>
-                    <EditIcon />
-                  </IconButton>
+                  
+
+                  {(() => {
+                      if (voted !== true) {
+                          return(
+                            <IconButton id = {"edit"+option.id} aria-label={"select "+option.id} size="large" onClick={() => { select(option) }}>
+                              <EditIcon />
+                            </IconButton>
+                          )
+                      }else{
+                        return(
+                          <IconButton id = {option.id} aria-label={option.id} size="large">
+                              
+                          </IconButton>
+                        )
+                      }
+                  })()}
                 </td>
                 <td>
                     {(() => {
@@ -133,8 +158,13 @@ function Poll() {
             return (
                 <div>
 
-
-                <Button variant="contained" id="select" onClick={() => { confirm() }}>Vote For {vote.data}</Button>
+                  {(() => {
+                      if (voted !== true) {
+                          return(
+                            <Button variant="contained" id="select" onClick={() => { confirm() }}>Vote For {vote.data}</Button>
+                          )
+                      }
+                  })()}
 
                 </div>
             )

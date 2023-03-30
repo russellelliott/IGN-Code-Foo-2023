@@ -114,7 +114,7 @@ function Poll() {
       },[]);
       return (
         <React.Fragment>
-            What is your favorite Sci-Fi Media?
+            <h1>What is your favorite Sci-Fi Media?</h1>
             {options.map(option => {
             //console.log(user);
             return (
@@ -171,7 +171,7 @@ function Poll() {
             } else {
             return (
                 <div>
-                <h1>Please pick an option to cast a vote.</h1>
+                  <h1>Please pick an option to cast a vote.</h1>
                 </div>
             )
             }

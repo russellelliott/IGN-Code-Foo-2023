@@ -26,8 +26,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Yumbai</title>
-        <meta name="description" content="CSE 187 Marketplace" />
+        <title>IGN 2023 Engineering Internship Coding Sample</title>
+        <meta name="description" content="IGN 2023 Engineering Internship Coding Sample" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

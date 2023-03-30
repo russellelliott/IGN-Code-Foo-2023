@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
-
+import CheckIcon from '@mui/icons-material/Check';
 
 function Poll() {
     function select(poll: Poll){
@@ -127,7 +126,7 @@ function Poll() {
                       if (voted !== true) {
                           return(
                             <IconButton id = {"edit"+option.id} aria-label={"select "+option.id} size="large" onClick={() => { select(option) }}>
-                              <EditIcon />
+                              <CheckIcon />
                             </IconButton>
                           )
                       }else{
